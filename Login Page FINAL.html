@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+
+<link rel="icon" href="https://i.pinimg.com/1200x/f9/10/33/f9103349fe375a9542158f355ed5a75a.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  height:100vh;
+  background:url('7108a436b9a1dcb931a7b5403e0474b3.jpg') no-repeat center/cover;
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  padding-left:60px;
+}
+
+.container{
+  width:360px;
+  padding:30px;
+  border-radius:15px;
+  background:rgba(255,255,255,0.07);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  position:relative;
+  z-index:1;
+  box-shadow:0 10px 40px rgba(255, 255, 255, 0.3);
+  transition:all 0.4s ease;
+}
+
+.container:hover{
+  transform:translateY(-10px) scale(1.03);
+  box-shadow:0 25px 60px rgba(255, 255, 255, 0.5);
+}
+
+.container::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:15px;
+  padding:1.5px;
+  background:linear-gradient(
+    135deg,
+    rgba(216, 214, 214, 0.95),
+    rgba(247, 246, 246, 0.25),
+    rgba(255,255,255,0.15),
+    rgba(220, 217, 217, 0.7)
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  pointer-events:none;
+  filter:blur(0.3px);
+}
+
+h1{
+  font-size:30px;
+  margin-bottom:5px;
+  background:linear-gradient(135deg,#000,#555);
+
+  background-clip:text;
+  -webkit-background-clip:text;
+
+  color:transparent;
+}
+
+.subtitle{
+  font-size:14px;
+  color:#111;
+  margin-bottom:20px;
+}
+
+.input-box{
+  position:relative;
+  margin-bottom:15px;
+}
+
+.input-box input{
+  width:100%;
+  padding:12px 40px 12px 12px;
+  border-radius:10px;
+  border:1px solid rgba(0,0,0,0.4);
+  background:transparent;
+  outline:none;
+  color:#000;
+}
+
+.eye{
+  position:absolute;
+  right:12px;
+  top:50%;
+  transform:translateY(-50%);
+  cursor:pointer;
+}
+
+.remember{
+  font-size:14px;
+  margin-bottom:15px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+button{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  background:linear-gradient(135deg,#222,#666);
+  color:#fff;
+  cursor:pointer;
+}
+
+button:hover{
+  background:black;
+}
+
+.signup{
+  text-align:center;
+  font-size:13px;
+  margin-top:15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Login</h1>
+  <p class="subtitle">Please login to your account</p>
+
+  <div class="input-box">
+    <input type="text" id="username" placeholder="Username">
+  </div>
+
+  <div class="input-box">
+    <input type="password" id="password" placeholder="Password">
+    <span class="eye" onclick="togglePassword()">👁</span>
+  </div>
+
+  <div class="remember">
+    <input type="checkbox"> Remember me
+  </div>
+
+  <button onclick="login()">Login</button>
+
+  <div class="signup">Don’t have an account? Sign up</div>
+</div>
+
+<script>
+function togglePassword(){
+  const input = document.getElementById("password");
+  input.type = input.type === "password" ? "text" : "password";
+}
+
+function login(){
+  const user = document.getElementById("username").value;
+  const pass = document.getElementById("password").value;
+
+  if(user && pass){
+    window.location.href = "garfield.html"; // ✅ CONNECTED
+  } else {
+    alert("Please enter username and password");
+  }
+}
+</script>
+
+</body>
+</html>

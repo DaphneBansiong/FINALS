@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garfield's Friends</title>
+
+
+<link rel="icon" href="https://i.pinimg.com/1200x/f9/10/33/f9103349fe375a9542158f355ed5a75a.jpg">
+<link href="https://fonts.cdnfonts.com/css/horizon" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  min-height:100vh;
+  background:url('https://i.pinimg.com/1200x/79/24/d0/7924d04d6253a3539dd25509e2d08c06.jpg') no-repeat center/cover;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  position:relative;
+}
+
+
+body::before{
+  content:'';
+  position:absolute;
+  width:100%;
+  height:100%;
+  backdrop-filter: blur(6px);
+  background:rgba(0,0,0,0.35);
+  z-index:0;
+}
+
+
+h1{
+  font-family:'Horizon', sans-serif;
+  color:white;
+  margin:40px 0 20px;
+  font-size:42px;
+  text-shadow:0 0 20px rgba(255,255,255,0.3),
+              0 0 30px rgba(0,0,0,0.7);
+  z-index:1;
+}
+
+
+.container{
+  width:90%;
+  max-width:1100px;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:25px;
+  z-index:1;
+}
+
+
+.card:nth-child(1),
+.card:nth-child(4),
+.card:nth-child(7),
+.card:nth-child(10){
+  grid-row: span 2;
+}
+
+
+.card{
+  border-radius:22px;
+  overflow:hidden;
+  position:relative;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(14px);
+  box-shadow:0 15px 40px rgba(0,0,0,0.6),
+             inset 0 0 10px rgba(255,255,255,0.1);
+  cursor:pointer;
+  transition: all 0.35s ease;
+}
+
+.card:hover{
+  transform:translateY(-10px) scale(1.04);
+  box-shadow:0 25px 60px rgba(0,0,0,0.8),
+             0 0 25px rgba(255,255,255,0.2);
+}
+
+
+.card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+
+.card p{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  text-align:center;
+  font-family:'Montserrat', sans-serif;
+  font-size:14px;
+  color:white;
+  padding:8px;
+  text-shadow:0 0 8px rgba(255,255,255,0.6),
+              0 0 12px rgba(0,0,0,0.8);
+  background:linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+}
+
+
+.card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:-80%;
+  width:50%;
+  height:100%;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.6),
+    transparent
+  );
+  transform:skewX(-25deg);
+}
+
+.card:hover::before{
+  animation:shine 0.9s;
+}
+
+@keyframes shine{
+  100%{ left:130%; }
+}
+
+
+.viewer{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.95);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:1000;
+}
+
+.viewer img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:15px;
+  box-shadow:0 0 40px rgba(255,255,255,0.2);
+}
+
+
+.pagination{
+  margin:40px 0;
+  display:flex;
+  gap:15px;
+  padding:12px 25px;
+  border-radius:25px;
+  backdrop-filter: blur(15px);
+  background: rgba(255,255,255,0.15);
+  box-shadow:0 10px 30px rgba(0,0,0,0.6),
+             inset 0 0 10px rgba(255,255,255,0.2);
+  z-index:1;
+}
+
+.pagination button{
+  font-family:'Montserrat', sans-serif;
+  border:none;
+  padding:10px 18px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.25);
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.pagination button:hover{
+  background:white;
+  color:black;
+  transform:scale(1.1);
+}
+
+.activePage{
+  background:white !important;
+  color:black !important;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Garfields Friends</h1>
+
+<div class="container">
+
+  
+  <div class="card page1" onclick="openViewer(this)">
+    <img src="https://i.pinimg.com/736x/b7/60/5c/b7605ca8080882cd3b939626d265e710.jpg"><p>Donkey</p>
+  </div>
+  <div class="card page1" onclick="openViewer(this)">
+    <img src="https://i.pinimg.com/1200x/c1/f4/a7/c1f4a7999949a663743f8e9bc4383ab1.jpg"><p>Buck</p>
+  </div>
+  <div class="card page1" onclick="openViewer(this)">
+    <img src="https://i.pinimg.com/1200x/08/94/ce/0894ceea048bec43c5eecc992312db36.jpg"><p>Panda</p>
+  </div>
+  <div class="card page1" onclick="openViewer(this)">
+    <img src="https://i.pinimg.com/736x/ac/f0/f8/acf0f84671d664b00f99a55fa525eacf.jpg"><p>Puss</p>
+  </div>
+  <div class="card page1" onclick="openViewer(this)">
+    <img src="https://i.pinimg.com/736x/2b/71/0f/2b710fde02cb5156c36d97d0d782c266.jpg"><p>Theodore</p>
+  </div>
+  <div class="card page1" onclick="openViewer(this)">
+    <img src="https://i.pinimg.com/736x/f3/04/f1/f304f13f1da62c3c732950bb5fafb20e.jpg"><p>King George</p>
+  </div>
+  <div class="card page1" onclick="openViewer(this)">
+    <img src="https://i.pinimg.com/1200x/aa/21/a3/aa21a3f70da4675f74069dc8d7804222.jpg"><p>Bob</p>
+  </div>
+  <div class="card page1" onclick="openViewer(this)">
+    <img src="https://i.pinimg.com/736x/df/3d/78/df3d786b4fdea1e7fdde38dda14700a5.jpg"><p>Sealo</p>
+  </div>
+  <div class="card page1" onclick="openViewer(this)">
+    <img src="https://i.pinimg.com/736x/54/1b/2f/541b2f86d4d52e1984a2549eae97ee59.jpg"><p>Teddy</p>
+  </div>
+  <div class="card page1" onclick="openViewer(this)">
+    <img src="https://i.pinimg.com/736x/71/ad/2d/71ad2d7f2f005eaa712e21478912cafc.jpg"><p>Lizard</p>
+  </div>
+
+  
+  <div class="card page2" onclick="openViewer(this)">
+    <img src="https://i.pinimg.com/736x/85/10/96/851096b187633fbe48d51ddea110a3be.jpg"><p>Mort</p>
+  </div>
+  <div class="card page2" onclick="openViewer(this)">
+    <img src="https://i.pinimg.com/736x/0d/d5/fe/0dd5fe4fd6287ade71ab51503686945a.jpg"><p>Rabid</p>
+  </div>
+  <div class="card page2" onclick="openViewer(this)">
+    <img src="https://i.pinimg.com/736x/3c/b3/df/3cb3df38c3bd635286c386b40bf5f5cb.jpg"><p>Katie</p>
+  </div>
+  <div class="card page2" onclick="openViewer(this)">
+    <img src="https://i.pinimg.com/736x/82/5d/63/825d6360e12a9e5408c93a6ca080cae3.jpg"><p>Shrek</p>
+  </div>
+  <div class="card page2" onclick="openViewer(this)">
+    <img src="https://i.pinimg.com/1200x/3f/ed/99/3fed99c7fff9a604cb556706e054ff54.jpg"><p>Nick</p>
+  </div>
+  <div class="card page2" onclick="openViewer(this)">
+    <img src="https://i.pinimg.com/736x/80/90/c7/8090c7d8ce5aca359838e030619f1844.jpg"><p>Gru</p>
+  </div>
+
+</div>
+
+
+<div class="pagination">
+  <button onclick="prevPage()">Prev</button>
+  <button onclick="goPage(1)" id="btn1">1</button>
+  <button onclick="goPage(2)" id="btn2">2</button>
+  <button onclick="nextPage()">Next</button>
+</div>
+
+
+<div class="viewer" id="viewer" onclick="closeViewer()">
+  <img id="viewerImg">
+</div>
+
+<script>
+let currentPage = 1;
+
+function showPage(page){
+  currentPage = page;
+
+  document.querySelectorAll(".card").forEach(card=>{
+    card.style.display = "none";
+  });
+
+  document.querySelectorAll(".page"+page).forEach(card=>{
+    card.style.display = "block";
+  });
+
+  document.querySelectorAll(".pagination button").forEach(btn=>{
+    btn.classList.remove("activePage");
+  });
+
+  document.getElementById("btn"+page).classList.add("activePage");
+}
+
+function nextPage(){
+  if(currentPage < 2) showPage(currentPage + 1);
+}
+
+function prevPage(){
+  if(currentPage > 1) showPage(currentPage - 1);
+}
+
+function goPage(page){
+  showPage(page);
+}
+
+function openViewer(card){
+  document.getElementById("viewerImg").src = card.querySelector("img").src;
+  document.getElementById("viewer").style.display = "flex";
+}
+
+function closeViewer(){
+  document.getElementById("viewer").style.display = "none";
+}
+
+showPage(1);
+</script>
+
+</body>
+</html>
